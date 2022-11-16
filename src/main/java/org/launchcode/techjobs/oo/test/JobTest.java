@@ -48,6 +48,40 @@ public class JobTest {
         //assertNotEquals(job1, job2);
         assertFalse(job1.equals(job2));
     }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        //String s = "\n"+job1+"\n";
+        String s =  job1.toString();
+        assertEquals("\n", String.valueOf(s.charAt(0)));
+        assertEquals("\n", String.valueOf(s.charAt(s.length()-1)));
+//        assertEquals('\n', (s.charAt(0)));
+//        assertEquals('\n', (s.charAt(s.length()-1)));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String s = "\n"+"ID: "+ job1.getId() +"\n"+
+                "Name: Product tester"+ "\n" +
+                "Employer: ACME"  + "\n" +
+                "Location: Desert" + "\n" +
+                "Position Type: Quality control" + "\n" +
+                "Core Competency: Persistence" + "\n";
+        assertEquals(s,job1.toString());
+    }
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job job1 = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String s = "\n"+"ID: "+ job1.getId() +"\n"+
+                "Name: Data not available"+ "\n" +
+                "Employer: ACME"  + "\n" +
+                "Location: Desert" + "\n" +
+                "Position Type: Quality control" + "\n" +
+                "Core Competency: Persistence" + "\n";
+        assertEquals(s,job1.toString());
+    }
+
 }
 
 

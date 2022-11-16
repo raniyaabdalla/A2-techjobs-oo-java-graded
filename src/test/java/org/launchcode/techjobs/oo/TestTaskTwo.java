@@ -120,8 +120,8 @@ public class TestTaskTwo extends AbstractTest {
             }
         }
 
-        assertTrue(positionType.equals(positionType));
-        assertFalse(positionType.equals(anotherPositionType));
+        assertEquals(positionType, positionType);
+        assertNotEquals(positionType, anotherPositionType);
         assertNotEquals(positionType.getId(), anotherPositionType.getId());
 
         // Use reflection to make both objects have the same id and test
@@ -133,7 +133,7 @@ public class TestTaskTwo extends AbstractTest {
         }
         anotherPositionTypeIdField.setAccessible(true);
         anotherPositionTypeIdField.set(anotherPositionType, positionType.getId());
-        assertTrue(positionType.equals(anotherPositionType));
+        assertEquals(positionType, anotherPositionType);
     }
 
     @Test

@@ -49,6 +49,7 @@ public class Job {
     public void setLocation(Location location) {
         this.location = location;
     }
+
     public int getId() {
         return id;
     }
@@ -104,13 +105,18 @@ public class Job {
                 this.coreCompetency.setValue("Data not available");
             }
 
-            return "\n" + "ID: " + this.id + "\n" +
+            String s = "\n" + "ID: " + this.id + "\n" +
                     "Name: " + this.name + "\n" +
                     "Employer: " + this.employer + "\n" +
                     "Location: " + this.location + "\n" +
                     "Position Type: " + this.positionType + "\n" +
                     "Core Competency: " + this.coreCompetency + "\n";
 
+
+            if (this.name ==""&& this.employer.getValue().equals("") && this.location.getValue().equals("") && this.positionType.getValue().equals("") && this.coreCompetency.getValue().equals("")){
+                return "OOPS!";
+            } else
+                return  s ;
         }
     }
 }
